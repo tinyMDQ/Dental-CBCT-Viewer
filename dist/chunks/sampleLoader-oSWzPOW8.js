@@ -1,7 +1,7 @@
 import { volumeLoader as S, imageLoader as C, metaData as D } from "@cornerstonejs/core";
 import { c as E } from "./constants-DMHmwL7Y.js";
 import { g as I } from "./gzip-gNdLXDK7.js";
-import { p as L } from "./index-D9J0-FOS.js";
+import { p as L } from "./index-Bc8SPET-.js";
 const P = "sample", v = "sample-frame-of-ref", A = /^sample(\d+):(\d+)$/;
 let x = !1, O = 0;
 const w = /* @__PURE__ */ new Map(), y = /* @__PURE__ */ new Map(), b = /* @__PURE__ */ new Set();
@@ -149,4 +149,4 @@ export {
   T as disposeSampleVolume,
   F as loadSample
 };
-//# sourceMappingURL=sampleLoader-DnV02HVk.js.map
+//# sourceMappingURL=sampleLoader-oSWzPOW8.js.map

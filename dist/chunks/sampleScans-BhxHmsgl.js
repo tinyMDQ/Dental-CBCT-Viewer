@@ -1,7 +1,7 @@
 import { g as y } from "./gzip-gNdLXDK7.js";
 import { parseScanMesh as u, setScanPolyData as g, setScanBaseTransform as d } from "./scanMesh-NquU4Ro1.js";
 import { S as w, e as $ } from "./archCurve-DCaMAt3K.js";
-import { p as h } from "./index-D9J0-FOS.js";
+import { p as h } from "./index-Bc8SPET-.js";
 function S(n) {
   if (typeof n?.file != "string" || !n.file) return null;
   const r = $.includes(n.type) ? n.type : "oral", s = Array.isArray(n.transform) && n.transform.length === 16 && n.transform.every((e) => typeof e == "number" && Number.isFinite(e)) ? n.transform : null;
@@ -52,4 +52,4 @@ export {
   T as loadSampleScans,
   S as validEntry
 };
-//# sourceMappingURL=sampleScans-D0b3F3wY.js.map
+//# sourceMappingURL=sampleScans-BhxHmsgl.js.map

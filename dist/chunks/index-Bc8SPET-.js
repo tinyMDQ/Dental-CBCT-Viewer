@@ -2782,9 +2782,9 @@ function ve() {
     const l = F(Nt[n]);
     try {
       await be();
-      const { loadSample: i } = await import("./sampleLoader-DnV02HVk.js"), p = n === "ctIo" ? 0.88 : 1, { study: c, volumeId: f, windowLevel: y } = await i(l, (z) => r?.(Math.round(z * p)));
+      const { loadSample: i } = await import("./sampleLoader-oSWzPOW8.js"), p = n === "ctIo" ? 0.88 : 1, { study: c, volumeId: f, windowLevel: y } = await i(l, (z) => r?.(Math.round(z * p)));
       if (e({ type: "SET_STUDY", payload: c }), e({ type: "SET_WINDOW_LEVEL", payload: y }), e({ type: "SET_VOLUME_ID", payload: f }), n === "ctIo") {
-        const { loadSampleScans: z } = await import("./sampleScans-D0b3F3wY.js"), k = await z(
+        const { loadSampleScans: z } = await import("./sampleScans-BhxHmsgl.js"), k = await z(
           (g) => t(g),
           l,
           (g) => r?.(Math.round(88 + g * 12))
@@ -3438,7 +3438,7 @@ ${w.join(`
 `)}`), { added: d, failed: w };
   }, [e.volumeId, e.scans, t, n]);
 }
-const da = J(() => import("./ImageExportModal-CqBNjxG8.js").then((e) => ({ default: e.ImageExportModal }))), ca = J(() => import("./PdfExportModal-jluvjbOb.js").then((e) => ({ default: e.PdfExportModal }))), pa = [
+const da = J(() => import("./ImageExportModal-CdSTtWSn.js").then((e) => ({ default: e.ImageExportModal }))), ca = J(() => import("./PdfExportModal-BXQged11.js").then((e) => ({ default: e.PdfExportModal }))), pa = [
   { id: "1x1", labelKey: "layout.view2d" },
   { id: "1+3", labelKey: "layout.view3d" },
   { id: "IO3D", labelKey: "layout.viewIo3d", needsIoScan: !0 },
@@ -3632,7 +3632,7 @@ ${i("guideCheck.proceed")}`;
       )),
       (t.layoutMode === "1+3" || t.layoutMode === "OPG2+1") && /* @__PURE__ */ a(qt, {})
     ] }),
-    !t.study && /* @__PURE__ */ a(Kt, {}),
+    !t.study && !e && /* @__PURE__ */ a(Kt, {}),
     /* @__PURE__ */ s("div", { className: "flex items-center gap-1", children: [
       t.study && !e && /* @__PURE__ */ s("div", { className: "relative", ref: h, children: [
         /* @__PURE__ */ s(
@@ -3843,7 +3843,7 @@ ${i("guideCheck.proceed")}`;
     ] })
   ] });
 }
-const za = J(() => import("./ViewerShell-eLf1WIhl.js").then((e) => ({ default: e.ViewerShell }))), xa = J(() => import("./StatusBar-wr7WcwI7.js").then((e) => ({ default: e.StatusBar }))), Sa = J(() => import("./SettingsPanel-D6vc_syI.js").then((e) => ({ default: e.SettingsPanel })));
+const za = J(() => import("./ViewerShell-BS1WMwfj.js").then((e) => ({ default: e.ViewerShell }))), xa = J(() => import("./StatusBar-CElKMH5m.js").then((e) => ({ default: e.StatusBar }))), Sa = J(() => import("./SettingsPanel--HO3wp6Z.js").then((e) => ({ default: e.SettingsPanel })));
 function ce({ label: e }) {
   return /* @__PURE__ */ a("div", { className: "flex items-center justify-center h-full", children: /* @__PURE__ */ s("div", { className: "text-center", children: [
     /* @__PURE__ */ a("div", { className: "w-12 h-12 border-4 border-dental-400 border-t-transparent rounded-full animate-spin mx-auto mb-4" }),
@@ -3985,4 +3985,4 @@ export {
   pt as s,
   R as u
 };
-//# sourceMappingURL=index-D9J0-FOS.js.map
+//# sourceMappingURL=index-Bc8SPET-.js.map

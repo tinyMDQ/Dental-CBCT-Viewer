@@ -2,7 +2,7 @@ import { jsxs as f, jsx as r, Fragment as Ie } from "react/jsx-runtime";
 import { useState as Z, useRef as ne, useCallback as Q, useEffect as J, useMemo as je } from "react";
 import { getRenderingEngine as ie, cache as He, Enums as ge, utilities as Qn, setVolumesForViewports as Sn, volumeLoader as er, RenderingEngine as tr, eventTarget as Je } from "@cornerstonejs/core";
 import { annotation as En, Enums as Ze } from "@cornerstonejs/tools";
-import { u as le, a as fe, c as nr, d as rr, l as bt, s as or, N as qt, j as An, e as ar, f as Dn, J as wt, M as Mt, g as sr, h as ir, i as lr } from "./index-D9J0-FOS.js";
+import { u as le, a as fe, c as nr, d as rr, l as bt, s as or, N as qt, j as An, e as ar, f as Dn, J as wt, M as Mt, g as sr, h as ir, i as lr } from "./index-Bc8SPET-.js";
 import { setActiveTool as ut, setupTools as pt, addViewportToToolGroup as Tn, addViewportTo3DToolGroup as cr } from "./toolManager-DUPAU9IU.js";
 import { R as se, f as Ue, d as Ot, e as Rt, V as Ee, b as ye, c as dr } from "./constants-DMHmwL7Y.js";
 import { getScanBaseTransform as ur, getScanPolyData as Pn, removeScanPolyData as _n, scanTriangleSoupWorld as Tt, scanMeshInfo as pr, buildScanActor as hr, sliceScanWorld as Ln, clearScanRegistry as mr } from "./scanMesh-NquU4Ro1.js";
@@ -5246,4 +5246,4 @@ function _s({ embedded: e } = {}) {
 export {
   _s as ViewerShell
 };
-//# sourceMappingURL=ViewerShell-eLf1WIhl.js.map
+//# sourceMappingURL=ViewerShell-BS1WMwfj.js.map

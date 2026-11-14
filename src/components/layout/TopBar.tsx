@@ -327,7 +327,7 @@ export function TopBar({ embedded }: { embedded?: boolean } = {}) {
       )}
 
       {/* Landing only: in-page section anchors (hidden once a study is open) */}
-      {!state.study && <LandingNav />}
+      {!state.study && !embedded && <LandingNav />}
 
       <div className="flex items-center gap-1">
         {/* New load dropdown: Import Scan (STL/OBJ/PLY) + Load Sample (soon) */}
