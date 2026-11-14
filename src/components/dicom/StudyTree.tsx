@@ -21,7 +21,7 @@ function seriesGeometry(s: DicomSeriesInfo): string | null {
   return parts.length ? parts.join(' · ') : null;
 }
 
-export function StudyTree() {
+export function StudyTree({ embedded }: { embedded?: boolean } = {}) {
   const { state, dispatch } = useViewer();
   const { t } = useI18n();
   const { loadFiles } = useDicomLoader();
@@ -77,27 +77,31 @@ export function StudyTree() {
       <div className="px-1 mb-1.5">
         <div className="flex items-center justify-between">
           <h3 className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">{t('series.panel')}</h3>
-          <button
-            onClick={() => folderInputRef.current?.click()}
-            className="flex items-center gap-1 text-[11px] px-2 py-1 rounded-md border border-dental-500 text-dental-600 dark:text-dental-400 hover:bg-dental-50 dark:hover:bg-dental-900/30 transition-colors"
-          >
-            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" strokeLinecap="round" /></svg>
-            {t('series.load')}
-          </button>
+          {!embedded && (
+            <button
+              onClick={() => folderInputRef.current?.click()}
+              className="flex items-center gap-1 text-[11px] px-2 py-1 rounded-md border border-dental-500 text-dental-600 dark:text-dental-400 hover:bg-dental-50 dark:hover:bg-dental-900/30 transition-colors"
+            >
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" strokeLinecap="round" /></svg>
+              {t('series.load')}
+            </button>
+          )}
         </div>
         {/* Surface scans (STL / OBJ / PLY) belong to the CT that is open, so
             they are loaded from here rather than as a separate "study". */}
-        <button
-          onClick={() => scanInputRef.current?.click()}
-          disabled={scanBusy}
-          title={t('series.loadScanHint')}
-          className="mt-1.5 w-full flex items-center justify-center gap-1.5 text-[11px] px-2 py-1 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700/50 transition-colors disabled:opacity-50"
-        >
-          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-            <path d="M12 2 21 7v10l-9 5-9-5V7l9-5z" /><path d="M3 7l9 5 9-5M12 12v10" />
-          </svg>
-          {scanBusy ? t('series.loadScanBusy') : t('series.loadScan')}
-        </button>
+        {!embedded && (
+          <button
+            onClick={() => scanInputRef.current?.click()}
+            disabled={scanBusy}
+            title={t('series.loadScanHint')}
+            className="mt-1.5 w-full flex items-center justify-center gap-1.5 text-[11px] px-2 py-1 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700/50 transition-colors disabled:opacity-50"
+          >
+            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
+              <path d="M12 2 21 7v10l-9 5-9-5V7l9-5z" /><path d="M3 7l9 5 9-5M12 12v10" />
+            </svg>
+            {scanBusy ? t('series.loadScanBusy') : t('series.loadScan')}
+          </button>
+        )}
         <input
           ref={folderInputRef}
           type="file"

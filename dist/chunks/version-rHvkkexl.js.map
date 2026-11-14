@@ -1,0 +1,1 @@
+{"version":3,"file":"version-rHvkkexl.js","sources":["../../src/version.ts"],"sourcesContent":["/** Single source of truth for the app/package version (keep in sync with\n *  package.json on every release). Used in the PDF footer and the About tab. */\nexport const APP_VERSION = '1.4.0';\n"],"names":["APP_VERSION"],"mappings":"AAEO,MAAMA,IAAc;"}

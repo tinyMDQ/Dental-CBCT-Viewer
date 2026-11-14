@@ -1,0 +1,11 @@
+export declare const RENDERING_ENGINE_ID = "DQ_RENDERING_ENGINE";
+export declare const TOOL_GROUP_ID = "DQ_DICOM_TOOL_GROUP";
+export declare const TOOL_GROUP_3D_ID = "DQ_DICOM_TOOL_GROUP_3D";
+export declare const VIEWPORT_ID = "DQ_VIEWPORT_STACK";
+export declare const VP_AXIAL = "DQ_VP_AXIAL";
+export declare const VP_SAGITTAL = "DQ_VP_SAGITTAL";
+export declare const VP_CORONAL = "DQ_VP_CORONAL";
+export declare const VP_3D = "DQ_VP_3D";
+export declare const VP_PANORAMIC = "DQ_VP_PANORAMIC";
+export declare const VOLUME_LOADER_SCHEME = "cornerstoneStreamingImageVolume";
+export declare const VOLUME_ID_PREFIX = "cornerstoneStreamingImageVolume:DQ_VOLUME_";

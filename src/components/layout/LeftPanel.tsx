@@ -110,7 +110,7 @@ function ToolButton({
   );
 }
 
-export function LeftPanel() {
+export function LeftPanel({ embedded }: { embedded?: boolean } = {}) {
   const { state, dispatch } = useViewer();
   const { t } = useI18n();
   const patientOpen = state.patientOpen;
@@ -131,13 +131,18 @@ export function LeftPanel() {
     <div className="flex h-full shrink-0">
       {/* Shared rail: Patient (top), Series, Layers, Tools (bottom) — each toggles independently */}
       <div className="w-10 shrink-0 flex flex-col border-r border-slate-200 dark:border-slate-700/60 bg-white/90 dark:bg-slate-900/90">
-        <RailButton
-          icon={<PersonIcon />}
-          label={t('topbar.patients')}
-          active={patientOpen}
-          onClick={() => dispatch({ type: 'TOGGLE_PATIENT' })}
-        />
-        <div className="border-t border-slate-200 dark:border-slate-700/60" />
+        {/* Embedded hosts own patient identity — DenCT's own patient registry is hidden */}
+        {!embedded && (
+          <>
+            <RailButton
+              icon={<PersonIcon />}
+              label={t('topbar.patients')}
+              active={patientOpen}
+              onClick={() => dispatch({ type: 'TOGGLE_PATIENT' })}
+            />
+            <div className="border-t border-slate-200 dark:border-slate-700/60" />
+          </>
+        )}
         {hasStudies && (
           <>
             <RailButton
@@ -298,7 +303,7 @@ export function LeftPanel() {
               </div>
             </div>
           )}
-          {hasStudies && seriesOpen && <StudyTree />}
+          {hasStudies && seriesOpen && <StudyTree embedded={embedded} />}
         </div>
       </div>
 

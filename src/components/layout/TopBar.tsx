@@ -149,7 +149,7 @@ function TopBarButton({
 
 // ── Top bar ────────────────────────────────────────────────────
 
-export function TopBar() {
+export function TopBar({ embedded }: { embedded?: boolean } = {}) {
   const { state, dispatch } = useViewer();
   const { lang, setLang, t } = useI18n();
   const { theme, toggleTheme } = useTheme();
@@ -288,14 +288,21 @@ export function TopBar() {
           </span>
         </div>
       )}
-      <button
-        onClick={() => { if (state.study) dispatch({ type: 'RESET' }); }}
-        title={state.study ? t('topbar.newLoad') : t('app.title')}
-        className="flex items-center gap-2 select-none rounded px-1 py-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-      >
-        <img src={publicUrl('denct-ikon.png')} alt="" aria-hidden className="w-6 h-6 rounded-md object-contain" />
-        <span className="text-sm font-semibold text-dental-600 dark:text-dental-400">{t('app.title')}</span>
-      </button>
+      {embedded ? (
+        <div className="flex items-center gap-2 select-none px-1 py-0.5">
+          <img src={publicUrl('denct-ikon.png')} alt="" aria-hidden className="w-6 h-6 rounded-md object-contain" />
+          <span className="text-sm font-semibold text-dental-600 dark:text-dental-400">{t('app.title')}</span>
+        </div>
+      ) : (
+        <button
+          onClick={() => { if (state.study) dispatch({ type: 'RESET' }); }}
+          title={state.study ? t('topbar.newLoad') : t('app.title')}
+          className="flex items-center gap-2 select-none rounded px-1 py-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        >
+          <img src={publicUrl('denct-ikon.png')} alt="" aria-hidden className="w-6 h-6 rounded-md object-contain" />
+          <span className="text-sm font-semibold text-dental-600 dark:text-dental-400">{t('app.title')}</span>
+        </button>
+      )}
 
       {/* Center: layout switcher (+ view modes in 1x1) */}
       {state.study && (
@@ -324,7 +331,7 @@ export function TopBar() {
 
       <div className="flex items-center gap-1">
         {/* New load dropdown: Import Scan (STL/OBJ/PLY) + Load Sample (soon) */}
-        {state.study && (
+        {state.study && !embedded && (
           <div className="relative" ref={newLoadRef}>
             <button
               onClick={() => setNewLoadOpen(o => !o)}
@@ -434,8 +441,8 @@ export function TopBar() {
           </div>
         )}
 
-        {/* Language selector */}
-        <div className="relative" ref={langRef}>
+        {/* Language selector — hosts that pass `lang` own the language, hide the switcher */}
+        <div className="relative" ref={langRef} style={embedded ? { display: 'none' } : undefined}>
           <button
             onClick={() => setLangOpen(o => !o)}
             title={t('topbar.language')}
@@ -465,10 +472,12 @@ export function TopBar() {
           )}
         </div>
 
-        {/* Dark / light mode */}
-        <TopBarButton title={t('topbar.theme')} onClick={toggleTheme}>
-          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-        </TopBarButton>
+        {/* Dark / light mode — hidden for embedded hosts that fix the theme */}
+        {!embedded && (
+          <TopBarButton title={t('topbar.theme')} onClick={toggleTheme}>
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </TopBarButton>
+        )}
 
         {/* Settings / intro / help — only once a study is open */}
         {state.study && (

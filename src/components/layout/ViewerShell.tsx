@@ -17,7 +17,7 @@ import { getVolumeData } from '@/core/cprEngine';
 import { lineProfileHU } from '@/core/measureStats';
 import { RENDERING_ENGINE_ID } from '@/core/constants';
 
-export function ViewerShell() {
+export function ViewerShell({ embedded }: { embedded?: boolean } = {}) {
   const { state, dispatch } = useViewer();
   const { t } = useI18n();
   const measurementsRef = useRef(state.measurements);
@@ -247,7 +247,7 @@ export function ViewerShell() {
 
   return (
     <div className="flex h-full w-full overflow-hidden bg-gray-100 dark:bg-gray-900">
-      <LeftPanel />
+      <LeftPanel embedded={embedded} />
       <div className="flex-1 relative overflow-hidden">
         {engineReady ? (
           <ViewportGrid />

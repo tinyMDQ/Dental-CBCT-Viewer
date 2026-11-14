@@ -214,13 +214,15 @@ function ViewerApp({
       </div>
     );
   } else if (!state.study) {
-    content = <LandingPage />;
+    // Embedded hosts load the study via the imperative API, so the marketing
+    // landing page is skipped: show a quiet loading state while files parse.
+    content = props.embedded ? <Spinner label={t('app.initializing')} /> : <LandingPage />;
   } else if (!state.isInitialized) {
     content = <Spinner label={t('app.initializing')} />;
   } else {
     content = (
       <Suspense fallback={<Spinner label={t('app.initializing')} />}>
-        <ViewerShell />
+        <ViewerShell embedded={props.embedded} />
       </Suspense>
     );
   }
@@ -230,13 +232,13 @@ function ViewerApp({
   return (
     <div className={`dcv-root ${theme === 'dark' ? 'dark' : ''} ${props.className ?? ''} h-full w-full`}>
       <div className="flex flex-col h-full w-full overflow-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-        <TopBar />
+        <TopBar embedded={props.embedded} />
         <div className="flex-1 overflow-hidden">{content}</div>
         <Suspense fallback={null}>
           {state.study && <StatusBar />}
           {state.activePanel === 'settings' && <SettingsPanel />}
         </Suspense>
-        <IntroTour />
+        {!props.embedded && <IntroTour />}
         <HelpPanel />
         {!props.embedded && <DisclaimerBanner />}
       </div>
